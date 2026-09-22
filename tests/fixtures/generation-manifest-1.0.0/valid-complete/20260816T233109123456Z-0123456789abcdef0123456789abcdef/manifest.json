@@ -1,0 +1,164 @@
+{
+  "manifest_version": "1.0.0",
+  "generation_id": "20260816T233109123456Z-0123456789abcdef0123456789abcdef",
+  "started_at": "2026-08-16T23:31:09.123456Z",
+  "completed_at": "2026-08-16T23:31:10.123456Z",
+  "state": "COMPLETE",
+  "runner": {
+    "module": "observer-runner",
+    "version": "2.0.0"
+  },
+  "registry": {
+    "version": "1.0.0",
+    "hash_algorithm": "sha256",
+    "sha256": "d136e537a98cd6f2ca22d4fd86d331117adc676b59ca4ca0379ee9008c55370c"
+  },
+  "summary": {
+    "declared": 7,
+    "successful": 7,
+    "failed": 0,
+    "reports_written": 7
+  },
+  "modules": [
+    {
+      "module": "observer-cpu",
+      "required": true,
+      "outcome": "SUCCESS",
+      "error_code": null,
+      "exit_code": 0,
+      "stdout_bytes": 286,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": {
+        "path": "observers/observer-cpu.json",
+        "module": "observer-cpu",
+        "contract_version": "2.1.0",
+        "version": "1.0.0",
+        "timestamp": "2026-08-16T23:31:09+0000",
+        "status": "UNKNOWN",
+        "size_bytes": 286,
+        "sha256": "308c5f49e5db94f9dff0159eafdbb096b07a92211c4be4f9481afd5cbf230304"
+      }
+    },
+    {
+      "module": "observer-memory",
+      "required": true,
+      "outcome": "SUCCESS",
+      "error_code": null,
+      "exit_code": 0,
+      "stdout_bytes": 289,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": {
+        "path": "observers/observer-memory.json",
+        "module": "observer-memory",
+        "contract_version": "2.1.0",
+        "version": "1.0.0",
+        "timestamp": "2026-08-16T23:31:09+0000",
+        "status": "UNKNOWN",
+        "size_bytes": 289,
+        "sha256": "f7c966f1092fe2fd0db8ce672def0ced01ff8d16fb9ee980bf9545d7cc444fe6"
+      }
+    },
+    {
+      "module": "observer-network",
+      "required": true,
+      "outcome": "SUCCESS",
+      "error_code": null,
+      "exit_code": 0,
+      "stdout_bytes": 290,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": {
+        "path": "observers/observer-network.json",
+        "module": "observer-network",
+        "contract_version": "2.1.0",
+        "version": "1.0.0",
+        "timestamp": "2026-08-16T23:31:09+0000",
+        "status": "UNKNOWN",
+        "size_bytes": 290,
+        "sha256": "6250736bebc7ab6659f0bfb4b0638a63570f838eb03941c7d129a00a108ccba3"
+      }
+    },
+    {
+      "module": "observer-services",
+      "required": true,
+      "outcome": "SUCCESS",
+      "error_code": null,
+      "exit_code": 0,
+      "stdout_bytes": 291,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": {
+        "path": "observers/observer-services.json",
+        "module": "observer-services",
+        "contract_version": "2.1.0",
+        "version": "1.0.0",
+        "timestamp": "2026-08-16T23:31:09+0000",
+        "status": "UNKNOWN",
+        "size_bytes": 291,
+        "sha256": "2b85ef0e639f86c239ec865e1446d3b6770d7eeb1792aba2b7d405e5046c4104"
+      }
+    },
+    {
+      "module": "observer-ssh",
+      "required": true,
+      "outcome": "SUCCESS",
+      "error_code": null,
+      "exit_code": 0,
+      "stdout_bytes": 286,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": {
+        "path": "observers/observer-ssh.json",
+        "module": "observer-ssh",
+        "contract_version": "2.1.0",
+        "version": "1.0.0",
+        "timestamp": "2026-08-16T23:31:09+0000",
+        "status": "UNKNOWN",
+        "size_bytes": 286,
+        "sha256": "e115aa6ef8c6a57376dd2ec28eb1238046c58b576ba6c7c9cf0f1ce6961d7ce0"
+      }
+    },
+    {
+      "module": "observer-storage",
+      "required": true,
+      "outcome": "SUCCESS",
+      "error_code": null,
+      "exit_code": 0,
+      "stdout_bytes": 290,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": {
+        "path": "observers/observer-storage.json",
+        "module": "observer-storage",
+        "contract_version": "2.1.0",
+        "version": "1.0.0",
+        "timestamp": "2026-08-16T23:31:09+0000",
+        "status": "UNKNOWN",
+        "size_bytes": 290,
+        "sha256": "3e8001c2632c94cc5e5e362c19132eb4daf2d796ab161201d123de827ab8ba6a"
+      }
+    },
+    {
+      "module": "observer-system",
+      "required": true,
+      "outcome": "SUCCESS",
+      "error_code": null,
+      "exit_code": 0,
+      "stdout_bytes": 289,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": {
+        "path": "observers/observer-system.json",
+        "module": "observer-system",
+        "contract_version": "2.1.0",
+        "version": "1.0.0",
+        "timestamp": "2026-08-16T23:31:09+0000",
+        "status": "UNKNOWN",
+        "size_bytes": 289,
+        "sha256": "67d6c7f8d334dfb4ea44cd08f1ecf90229fd21770878fca4949cf1c5fbd5694d"
+      }
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "registry_version": "1.0.0",
+  "report_contract": "2.1.0",
+  "limits": {
+    "observer_timeout_seconds": 30,
+    "stdout_max_bytes": 262144,
+    "stderr_max_bytes": 65536,
+    "report_max_bytes": 262144,
+    "json_max_depth": 32,
+    "max_observers": 32
+  },
+  "observers": [
+    {
+      "module": "observer-cpu",
+      "executable": "observer/observer-cpu.sh",
+      "required": true,
+      "module_versions": [
+        "1.0.0"
+      ],
+      "output_contract": "2.1.0"
+    },
+    {
+      "module": "observer-memory",
+      "executable": "observer/observer-memory.sh",
+      "required": true,
+      "module_versions": [
+        "1.0.0"
+      ],
+      "output_contract": "2.1.0"
+    },
+    {
+      "module": "observer-network",
+      "executable": "observer/observer-network.sh",
+      "required": true,
+      "module_versions": [
+        "1.0.0"
+      ],
+      "output_contract": "2.1.0"
+    },
+    {
+      "module": "observer-services",
+      "executable": "observer/observer-services.sh",
+      "required": true,
+      "module_versions": [
+        "1.0.0"
+      ],
+      "output_contract": "2.1.0"
+    },
+    {
+      "module": "observer-ssh",
+      "executable": "observer/observer-ssh.sh",
+      "required": true,
+      "module_versions": [
+        "1.0.0"
+      ],
+      "output_contract": "2.1.0"
+    },
+    {
+      "module": "observer-storage",
+      "executable": "observer/observer-storage.sh",
+      "required": true,
+      "module_versions": [
+        "1.0.0"
+      ],
+      "output_contract": "2.1.0"
+    },
+    {
+      "module": "observer-system",
+      "executable": "observer/observer-system.sh",
+      "required": true,
+      "module_versions": [
+        "1.0.0"
+      ],
+      "output_contract": "2.1.0"
+    }
+  ]
+}

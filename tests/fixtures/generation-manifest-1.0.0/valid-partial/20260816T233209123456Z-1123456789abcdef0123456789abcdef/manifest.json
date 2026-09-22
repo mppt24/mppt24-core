@@ -1,0 +1,110 @@
+{
+  "manifest_version": "1.0.0",
+  "generation_id": "20260816T233209123456Z-1123456789abcdef0123456789abcdef",
+  "started_at": "2026-08-16T23:32:09.123456Z",
+  "completed_at": "2026-08-16T23:32:10.123456Z",
+  "state": "PARTIAL",
+  "runner": {
+    "module": "observer-runner",
+    "version": "2.0.0"
+  },
+  "registry": {
+    "version": "1.0.0",
+    "hash_algorithm": "sha256",
+    "sha256": "d136e537a98cd6f2ca22d4fd86d331117adc676b59ca4ca0379ee9008c55370c"
+  },
+  "summary": {
+    "declared": 7,
+    "successful": 1,
+    "failed": 6,
+    "reports_written": 1
+  },
+  "modules": [
+    {
+      "module": "observer-cpu",
+      "required": true,
+      "outcome": "SUCCESS",
+      "error_code": null,
+      "exit_code": 0,
+      "stdout_bytes": 286,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": {
+        "path": "observers/observer-cpu.json",
+        "module": "observer-cpu",
+        "contract_version": "2.1.0",
+        "version": "1.0.0",
+        "timestamp": "2026-08-16T23:32:09+0000",
+        "status": "UNKNOWN",
+        "size_bytes": 286,
+        "sha256": "592d01cc87d4f993ad9d7005d260fd82c137611e97e74ffa01af9960b7d4f64d"
+      }
+    },
+    {
+      "module": "observer-memory",
+      "required": true,
+      "outcome": "FAILED",
+      "error_code": "EXECUTION_FAILED",
+      "exit_code": 1,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": null
+    },
+    {
+      "module": "observer-network",
+      "required": true,
+      "outcome": "FAILED",
+      "error_code": "EXECUTION_FAILED",
+      "exit_code": 1,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": null
+    },
+    {
+      "module": "observer-services",
+      "required": true,
+      "outcome": "FAILED",
+      "error_code": "EXECUTION_FAILED",
+      "exit_code": 1,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": null
+    },
+    {
+      "module": "observer-ssh",
+      "required": true,
+      "outcome": "FAILED",
+      "error_code": "EXECUTION_FAILED",
+      "exit_code": 1,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": null
+    },
+    {
+      "module": "observer-storage",
+      "required": true,
+      "outcome": "FAILED",
+      "error_code": "EXECUTION_FAILED",
+      "exit_code": 1,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": null
+    },
+    {
+      "module": "observer-system",
+      "required": true,
+      "outcome": "FAILED",
+      "error_code": "EXECUTION_FAILED",
+      "exit_code": 1,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": null
+    }
+  ]
+}

@@ -1,0 +1,316 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mppt24:schema:generation-manifest:1.0.0",
+  "title": "MPPT24 CORE Generation Manifest",
+  "description": "Contrato estrutural do manifesto de geração 1.0.0.",
+  "type": "object",
+  "$defs": {
+    "moduleName": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "generationId": {
+      "type": "string",
+      "pattern": "^[0-9]{8}T[0-9]{12}Z-[0-9a-f]{32}$"
+    },
+    "manifestTimestamp": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{6}Z$"
+    },
+    "reportTimestamp": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[+-][0-9]{4}$"
+    },
+    "failureCode": {
+      "enum": [
+        "EXECUTABLE_MISSING",
+        "EXECUTABLE_INVALID",
+        "EXECUTION_FAILED",
+        "EXECUTION_TIMEOUT",
+        "OUTPUT_LIMIT_EXCEEDED",
+        "STDERR_LIMIT_EXCEEDED",
+        "EMPTY_REPORT",
+        "INVALID_JSON",
+        "CONTRACT_VIOLATION",
+        "MODULE_MISMATCH"
+      ]
+    },
+    "reportDescriptor": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^observers/[a-z0-9]+(-[a-z0-9]+)*\\.json$"
+        },
+        "module": {
+          "$ref": "#/$defs/moduleName"
+        },
+        "contract_version": {
+          "const": "2.1.0"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "timestamp": {
+          "$ref": "#/$defs/reportTimestamp"
+        },
+        "status": {
+          "enum": [
+            "OK",
+            "WARNING",
+            "ERROR",
+            "UNKNOWN"
+          ]
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 262144
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "path",
+        "module",
+        "contract_version",
+        "version",
+        "timestamp",
+        "status",
+        "size_bytes",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "moduleEntry": {
+      "type": "object",
+      "properties": {
+        "module": {
+          "$ref": "#/$defs/moduleName"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "outcome": {
+          "enum": [
+            "SUCCESS",
+            "FAILED"
+          ]
+        },
+        "error_code": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/failureCode"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "exit_code": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "stdout_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "stderr_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "duration_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "report": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/reportDescriptor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "module",
+        "required",
+        "outcome",
+        "error_code",
+        "exit_code",
+        "stdout_bytes",
+        "stderr_bytes",
+        "duration_ms",
+        "report"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "outcome": {
+                "const": "SUCCESS"
+              }
+            },
+            "required": [
+              "outcome"
+            ]
+          },
+          "then": {
+            "properties": {
+              "error_code": {
+                "type": "null"
+              },
+              "exit_code": {
+                "const": 0
+              },
+              "report": {
+                "$ref": "#/$defs/reportDescriptor"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "outcome": {
+                "const": "FAILED"
+              }
+            },
+            "required": [
+              "outcome"
+            ]
+          },
+          "then": {
+            "properties": {
+              "error_code": {
+                "$ref": "#/$defs/failureCode"
+              },
+              "report": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "manifest_version": {
+      "const": "1.0.0"
+    },
+    "generation_id": {
+      "$ref": "#/$defs/generationId"
+    },
+    "started_at": {
+      "$ref": "#/$defs/manifestTimestamp"
+    },
+    "completed_at": {
+      "$ref": "#/$defs/manifestTimestamp"
+    },
+    "state": {
+      "enum": [
+        "COMPLETE",
+        "PARTIAL",
+        "FAILED"
+      ]
+    },
+    "runner": {
+      "type": "object",
+      "properties": {
+        "module": {
+          "const": "observer-runner"
+        },
+        "version": {
+          "const": "2.0.0"
+        }
+      },
+      "required": [
+        "module",
+        "version"
+      ],
+      "additionalProperties": false
+    },
+    "registry": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "const": "1.0.0"
+        },
+        "hash_algorithm": {
+          "const": "sha256"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "version",
+        "hash_algorithm",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "declared": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32
+        },
+        "successful": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 32
+        },
+        "failed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 32
+        },
+        "reports_written": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 32
+        }
+      },
+      "required": [
+        "declared",
+        "successful",
+        "failed",
+        "reports_written"
+      ],
+      "additionalProperties": false
+    },
+    "modules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/moduleEntry"
+      },
+      "minItems": 1,
+      "maxItems": 32
+    }
+  },
+  "required": [
+    "manifest_version",
+    "generation_id",
+    "started_at",
+    "completed_at",
+    "state",
+    "runner",
+    "registry",
+    "summary",
+    "modules"
+  ],
+  "additionalProperties": false
+}

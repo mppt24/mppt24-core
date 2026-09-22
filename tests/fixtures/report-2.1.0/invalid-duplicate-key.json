@@ -1,0 +1,16 @@
+{
+  "module": "observer-example",
+  "module": "observer-replaced",
+  "version": "1.0.0",
+  "timestamp": "2026-08-16T12:30:45+0100",
+  "status": "OK",
+  "confidence": 100,
+  "facts": {},
+  "analysis": [],
+  "conclusions": [],
+  "health": {},
+  "summary": [],
+  "recommendations": [],
+  "warnings": [],
+  "errors": []
+}

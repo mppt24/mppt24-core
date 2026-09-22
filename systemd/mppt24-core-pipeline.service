@@ -1,0 +1,34 @@
+[Unit]
+Description=MPPT24 CORE operational pipeline
+After=local-fs.target
+
+[Service]
+Type=oneshot
+User=mppt24
+Group=mppt24
+WorkingDirectory=/home/mppt24/mppt24-core
+UMask=0027
+
+RuntimeDirectory=mppt24-runner
+RuntimeDirectoryMode=0750
+RuntimeDirectoryPreserve=yes
+
+StateDirectory=mppt24-runner mppt24-pipeline
+StateDirectoryMode=0750
+
+ExecStart=/home/mppt24/mppt24-core/core/run-pipeline.sh
+
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=read-only
+
+ReadWritePaths=/var/lib/mppt24-runner
+ReadWritePaths=/var/lib/mppt24-pipeline
+ReadWritePaths=/run/mppt24-runner
+ReadWritePaths=/home/mppt24/mppt24-core/data/history
+
+StandardOutput=journal
+StandardError=journal
+
+TimeoutStartSec=5min

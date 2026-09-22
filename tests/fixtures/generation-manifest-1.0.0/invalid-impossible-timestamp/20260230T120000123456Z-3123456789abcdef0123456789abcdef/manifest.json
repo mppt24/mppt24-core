@@ -1,0 +1,101 @@
+{
+  "manifest_version": "1.0.0",
+  "generation_id": "20260230T120000123456Z-3123456789abcdef0123456789abcdef",
+  "started_at": "2026-02-30T12:00:00.123456Z",
+  "completed_at": "2026-02-30T12:00:01.123456Z",
+  "state": "FAILED",
+  "runner": {
+    "module": "observer-runner",
+    "version": "2.0.0"
+  },
+  "registry": {
+    "version": "1.0.0",
+    "hash_algorithm": "sha256",
+    "sha256": "d136e537a98cd6f2ca22d4fd86d331117adc676b59ca4ca0379ee9008c55370c"
+  },
+  "summary": {
+    "declared": 7,
+    "successful": 0,
+    "failed": 7,
+    "reports_written": 0
+  },
+  "modules": [
+    {
+      "module": "observer-cpu",
+      "required": true,
+      "outcome": "FAILED",
+      "error_code": "EXECUTION_FAILED",
+      "exit_code": 1,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": null
+    },
+    {
+      "module": "observer-memory",
+      "required": true,
+      "outcome": "FAILED",
+      "error_code": "EXECUTION_FAILED",
+      "exit_code": 1,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": null
+    },
+    {
+      "module": "observer-network",
+      "required": true,
+      "outcome": "FAILED",
+      "error_code": "EXECUTION_FAILED",
+      "exit_code": 1,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": null
+    },
+    {
+      "module": "observer-services",
+      "required": true,
+      "outcome": "FAILED",
+      "error_code": "EXECUTION_FAILED",
+      "exit_code": 1,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": null
+    },
+    {
+      "module": "observer-ssh",
+      "required": true,
+      "outcome": "FAILED",
+      "error_code": "EXECUTION_FAILED",
+      "exit_code": 1,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": null
+    },
+    {
+      "module": "observer-storage",
+      "required": true,
+      "outcome": "FAILED",
+      "error_code": "EXECUTION_FAILED",
+      "exit_code": 1,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": null
+    },
+    {
+      "module": "observer-system",
+      "required": true,
+      "outcome": "FAILED",
+      "error_code": "EXECUTION_FAILED",
+      "exit_code": 1,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "duration_ms": 10,
+      "report": null
+    }
+  ]
+}

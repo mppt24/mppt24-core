@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mppt24:schema:validated-generation-snapshot:1.0.0",
+  "title": "MPPT24 CORE Validated Generation Snapshot Envelope",
+  "description": "Envelope do snapshot validado para consumo pelo Decision Engine 3.0.0. O manifesto e os relatórios são validados separadamente pelos respetivos schemas oficiais.",
+  "type": "object",
+  "properties": {
+    "snapshot_version": {
+      "const": "1.0.0"
+    },
+    "generation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "state": {
+      "enum": [
+        "COMPLETE",
+        "PARTIAL",
+        "FAILED"
+      ]
+    },
+    "manifest": {
+      "type": "object"
+    },
+    "reports": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      },
+      "maxProperties": 32
+    }
+  },
+  "required": [
+    "snapshot_version",
+    "generation_id",
+    "state",
+    "manifest",
+    "reports"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,46 @@
+{
+  "module": "decision-example",
+  "version": "2.4.0-beta.1+build.7",
+  "timestamp": "2026-08-16T12:30:45-0230",
+  "status": "WARNING",
+  "confidence": 88,
+  "facts": {
+    "available": true,
+    "count": 3,
+    "ratio": 0.75,
+    "description": "",
+    "unknown": null,
+    "items": [
+      "a",
+      "b"
+    ],
+    "details": {
+      "source": "example"
+    }
+  },
+  "analysis": [
+    "Foram observados três elementos."
+  ],
+  "conclusions": [
+    "O resultado está disponível com limitações."
+  ],
+  "health": {
+    "system": {
+      "status": "WARNING",
+      "confidence": 88,
+      "details": {
+        "source": "decision-example"
+      }
+    }
+  },
+  "summary": [
+    "Validação completa do exemplo."
+  ],
+  "recommendations": [
+    "Rever os elementos observados."
+  ],
+  "warnings": [
+    "A confiança está abaixo do valor máximo."
+  ],
+  "errors": []
+}

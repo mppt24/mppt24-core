@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mppt24:schema:observer-registry:1.0.0",
+  "title": "MPPT24 CORE Observer Registry",
+  "description": "Contrato estrutural do Registo de Observers 1.0.0.",
+  "type": "object",
+  "$defs": {
+    "observer": {
+      "type": "object",
+      "properties": {
+        "module": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "executable": {
+          "type": "string",
+          "pattern": "^observer/[a-z0-9]+(-[a-z0-9]+)*\\.sh$"
+        },
+        "required": {
+          "const": true
+        },
+        "module_versions": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "1.0.0"
+            }
+          ],
+          "items": false,
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "output_contract": {
+          "const": "2.1.0"
+        }
+      },
+      "required": [
+        "module",
+        "executable",
+        "required",
+        "module_versions",
+        "output_contract"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "registry_version": {
+      "const": "1.0.0"
+    },
+    "report_contract": {
+      "const": "2.1.0"
+    },
+    "limits": {
+      "type": "object",
+      "properties": {
+        "observer_timeout_seconds": {
+          "const": 30
+        },
+        "stdout_max_bytes": {
+          "const": 262144
+        },
+        "stderr_max_bytes": {
+          "const": 65536
+        },
+        "report_max_bytes": {
+          "const": 262144
+        },
+        "json_max_depth": {
+          "const": 32
+        },
+        "max_observers": {
+          "const": 32
+        }
+      },
+      "required": [
+        "observer_timeout_seconds",
+        "stdout_max_bytes",
+        "stderr_max_bytes",
+        "report_max_bytes",
+        "json_max_depth",
+        "max_observers"
+      ],
+      "additionalProperties": false
+    },
+    "observers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/observer"
+      },
+      "minItems": 1,
+      "maxItems": 32
+    }
+  },
+  "required": [
+    "registry_version",
+    "report_contract",
+    "limits",
+    "observers"
+  ],
+  "additionalProperties": false
+}

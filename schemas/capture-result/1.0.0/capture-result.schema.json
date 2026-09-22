@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mppt24:schema:capture-result:1.0.0",
+  "title": "MPPT24 CORE Observer Capture Result",
+  "description": "Resultado estruturado do Capturador 1.0.0.",
+  "type": "object",
+  "$defs": {
+    "module": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "failureCode": {
+      "enum": [
+        "USAGE_INVALID",
+        "DEPENDENCY_UNAVAILABLE",
+        "REGISTRY_INVALID",
+        "MODULE_NOT_AUTHORIZED",
+        "EXECUTABLE_MISSING",
+        "EXECUTABLE_INVALID",
+        "STAGING_INVALID",
+        "EXECUTION_FAILED",
+        "EXECUTION_TIMEOUT",
+        "OUTPUT_LIMIT_EXCEEDED",
+        "STDERR_LIMIT_EXCEEDED",
+        "EMPTY_REPORT",
+        "INVALID_JSON",
+        "CONTRACT_VIOLATION",
+        "MODULE_MISMATCH",
+        "TEMPORARY_PERSISTENCE_FAILED",
+        "INTERNAL_ERROR"
+      ]
+    }
+  },
+  "properties": {
+    "capture_contract": {
+      "const": "1.0.0"
+    },
+    "module": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/module"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "outcome": {
+      "enum": [
+        "SUCCESS",
+        "FAILED"
+      ]
+    },
+    "code": {
+      "type": "string"
+    },
+    "observer_exit_code": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "report": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^observers/[a-z0-9]+(-[a-z0-9]+)*\\.json$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "stdout_bytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "stderr_bytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "capture_contract",
+    "module",
+    "outcome",
+    "code",
+    "observer_exit_code",
+    "report",
+    "stdout_bytes",
+    "stderr_bytes",
+    "duration_ms"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "outcome": {
+            "const": "SUCCESS"
+          }
+        },
+        "required": [
+          "outcome"
+        ]
+      },
+      "then": {
+        "properties": {
+          "module": {
+            "$ref": "#/$defs/module"
+          },
+          "code": {
+            "const": "SUCCESS"
+          },
+          "observer_exit_code": {
+            "const": 0
+          },
+          "report": {
+            "type": "string"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "code": {
+            "$ref": "#/$defs/failureCode"
+          },
+          "report": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

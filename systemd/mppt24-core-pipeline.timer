@@ -1,0 +1,14 @@
+[Unit]
+Description=Run MPPT24 CORE pipeline every 15 minutes
+
+[Timer]
+OnCalendar=*-*-* *:03:00
+OnCalendar=*-*-* *:18:00
+OnCalendar=*-*-* *:33:00
+OnCalendar=*-*-* *:48:00
+AccuracySec=30s
+Persistent=true
+Unit=mppt24-core-pipeline.service
+
+[Install]
+WantedBy=timers.target

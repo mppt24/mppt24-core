@@ -1,0 +1,15 @@
+*.bak
+*.tmp
+*.new
+*.new*
+*.orig
+*.rej
+*~
+
+# MPPT24 CORE - Runtime artifacts
+data/observer/*.json
+data/history/*.json
+
+# Python runtime artifacts
+__pycache__/
+*.pyc
