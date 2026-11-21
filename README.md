@@ -1,5 +1,7 @@
 # MPPT24 CORE
 
+[Guia de leitura, infográfico e cuidados](GUIA.md)
+
 MPPT24 CORE é uma plataforma modular para observar sistemas Linux, validar os dados recolhidos e produzir decisões técnicas justificáveis.
 
 O sistema separa rigorosamente observação, validação, histórico e decisão. Quando os dados são insuficientes ou incoerentes, o resultado é `UNKNOWN`, em vez de uma conclusão inventada.
