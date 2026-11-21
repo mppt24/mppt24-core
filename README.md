@@ -119,6 +119,7 @@ A base foi desenvolvida e validada em Ubuntu Server 24.04 LTS.
 Principais requisitos:
 
 - Linux;
+- Git para descarregar o código;
 - Python 3;
 - Bash;
 - `jq` e `ip` (pacote `iproute2`);
@@ -129,7 +130,7 @@ Principais requisitos:
 
 A regressão oficial abrange captura, manifesto, registo, Runner, Decision Engine, serialização, snapshot e contratos de relatório e saúde.
 
-A validação deve ser executada antes de qualquer instalação ou promoção.
+Podes consultar os resultados no GitHub sem instalar nada. Para repetir a verificação, usa um ambiente Linux de teste. Os comandos abaixo instalam apenas as dependências e executam os testes a partir da pasta do código. [Ver a execução dos testes do CORE](https://github.com/mppt24/mppt24-core/actions/runs/44919951511)
 
 Em Ubuntu Server 24.04 LTS, instala as dependências com:
 
@@ -137,11 +138,13 @@ Em Ubuntu Server 24.04 LTS, instala as dependências com:
 sudo apt-get install iproute2 jq python3-jsonschema
 ```
 
-Na raiz do repositório, executa todas as suites de contrato:
+Se ainda não tens o código, descarrega-o com `git clone https://github.com/mppt24/mppt24-core.git` e entra na pasta com `cd mppt24-core`. Aí, executa os conjuntos de testes:
 
 ```bash
 bash tests/run-contract-tests.sh
 ```
+
+No fim, procura a linha que começa por `Suites:`. Se indicar `falhas: 0`, os conjuntos de testes passaram. Se houver falhas, procura acima o nome do primeiro teste que falhou e guarda a mensagem de erro com a versão em uso.
 
 O mesmo comando corre no [GitHub Actions](https://github.com/mppt24/mppt24-core/actions/workflows/contracts.yml). As suites usam ficheiros temporários e fixtures sintéticas. Os testes de integração dos observadores fazem leituras locais do sistema.
 
