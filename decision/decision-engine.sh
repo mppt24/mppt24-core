@@ -138,7 +138,7 @@ get_interface_field() {
     local field="$2"
 
     jq -r         --arg ifname "$ifname"         --arg field "$field" '
-            .["observer-network"].interfaces[]?
+            .["observer-network"].interfaces[]
             | select(.ifname == $ifname)
             | .[$field] // empty
         ' <<<"$ALL_FACTS"
@@ -148,7 +148,7 @@ get_interface_status() {
     local ifname="$1"
 
     jq -r         --arg ifname "$ifname" '
-            .["observer-network"].interfaces[]?
+            .["observer-network"].interfaces[]
             | select(.ifname == $ifname)
             | if ((.flags | index("UP")) and (.flags | index("LOWER_UP")))
                 then "UP"
