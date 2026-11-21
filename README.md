@@ -1,3 +1,5 @@
+<div lang="pt-PT">
+
 # MPPT24 CORE
 
 O CORE recolhe dados de um sistema Linux, como utilização de CPU, espaço em disco e estado dos serviços. Verifica a qualidade desses dados e produz um relatório que explica os resultados.
@@ -179,3 +181,5 @@ Marco Paulo Peixoto Teixeira — MPPT24.
 ## Licença
 
 Este projeto é disponibilizado sob a GNU Affero General Public License, versão 3. Consulte [LICENSE](LICENSE).
+
+</div>
