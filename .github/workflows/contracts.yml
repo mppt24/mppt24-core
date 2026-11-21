@@ -1,0 +1,41 @@
+name: Contratos do CORE
+
+on:
+  push:
+    branches: [main, "review/prevencao-ssh"]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Instalar dependências
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq python3-jsonschema iproute2
+      - name: Executar todos os contratos
+        shell: bash
+        run: |
+          shopt -s nullglob
+          python_tests=(tests/*-contract-test.py)
+          bash_tests=(tests/*-contract-test.sh)
+          (( ${#python_tests[@]} && ${#bash_tests[@]} ))
+          failed=0
+          for suite in "${python_tests[@]}"; do
+            printf '\n=== %s ===\n' "$suite"
+            /usr/bin/python3 -I "$suite" || failed=1
+          done
+          for suite in "${bash_tests[@]}"; do
+            printf '\n=== %s ===\n' "$suite"
+            bash "$suite" || failed=1
+          done
+          exit "$failed"
