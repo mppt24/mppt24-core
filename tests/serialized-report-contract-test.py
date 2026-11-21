@@ -848,6 +848,56 @@ class SerializedReportContractTest(unittest.TestCase):
 
                 self.assert_result(result, 0)
 
+    def test_network_observer_reports_collection_failure(self) -> None:
+        ip = self.temp_path / "ip"
+        ip.write_text("#!/bin/sh\nexit 1\n", encoding="utf-8")
+        ip.chmod(0o755)
+
+        result = subprocess.run(
+            ["/usr/bin/bash", str(ROOT / "observer" / "observer-network.sh")],
+            env={**os.environ, "PATH": f"{self.temp_path}:{os.environ['PATH']}"},
+            check=False,
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stderr, "")
+        report = json.loads(result.stdout)
+        self.assertEqual(report["status"], "ERROR")
+        self.assertEqual(report["confidence"], 0)
+        self.assertEqual(report["facts"], {})
+        self.assertTrue(report["errors"])
+        path = self.write_bytes(result.stdout.encode("utf-8"))
+        self.assert_result(
+            self.run_validator(path, expected_module="observer-network"),
+            0,
+        )
+
+    def test_legacy_decision_reports_unknown_without_network_facts(self) -> None:
+        self.write_json(
+            {**self.base_report, "module": "observer-cpu"},
+            name="observer-cpu.json",
+        )
+        result = subprocess.run(
+            ["/usr/bin/bash", str(ROOT / "decision" / "decision-engine.sh")],
+            env={**os.environ, "MPPT24_REPORT_DIR": str(self.temp_path)},
+            check=False,
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stderr, "")
+        report = json.loads(result.stdout)
+        self.assertEqual(report["health"]["connectivity"]["status"], "UNKNOWN")
+        path = self.write_bytes(result.stdout.encode("utf-8"))
+        self.assert_result(
+            self.run_validator(path, expected_module="decision-engine"),
+            0,
+        )
 
     def test_schema_unreadable(self) -> None:
         _validator, schema = self.make_sandbox()

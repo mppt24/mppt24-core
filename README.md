@@ -114,7 +114,7 @@ Principais requisitos:
 - Linux;
 - Python 3;
 - Bash;
-- `jq`;
+- `jq` e `ip` (pacote `iproute2`);
 - `jsonschema` para Python;
 - systemd para a integração operacional.
 
@@ -124,11 +124,19 @@ A regressão oficial abrange captura, manifesto, registo, Runner, Decision Engin
 
 A validação deve ser executada antes de qualquer instalação ou promoção.
 
-Exemplo:
+Em Ubuntu Server 24.04 LTS, instala as dependências com:
 
 ```bash
-python3 -I tests/decision-engine-3-contract-test.py
+sudo apt-get install iproute2 jq python3-jsonschema
 ```
+
+Na raiz do repositório, executa todas as suites de contrato:
+
+```bash
+bash tests/run-contract-tests.sh
+```
+
+O mesmo comando corre no [GitHub Actions](https://github.com/mppt24/mppt24-core/actions/workflows/contracts.yml). As suites usam ficheiros temporários e fixtures sintéticas. Os testes de integração dos observadores fazem leituras locais do sistema.
 
 A integração operacional deve ser validada num ambiente isolado antes de ser utilizada num servidor de produção.
 

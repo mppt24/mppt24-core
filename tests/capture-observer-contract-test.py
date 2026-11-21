@@ -1110,9 +1110,10 @@ class CaptureObserverContractTest(unittest.TestCase):
             execution.stdout_bytes,
             32,
         )
-        self.assertEqual(
+        # O processo pode terminar antes de a captura lhe enviar o sinal.
+        self.assertIn(
             execution.exit_code,
-            0,
+            (0, -signal.SIGTERM, -signal.SIGKILL),
         )
         self.assert_no_report()
 
@@ -1135,9 +1136,9 @@ class CaptureObserverContractTest(unittest.TestCase):
             execution.stderr_bytes,
             32,
         )
-        self.assertEqual(
+        self.assertIn(
             execution.exit_code,
-            0,
+            (0, -signal.SIGTERM, -signal.SIGKILL),
         )
         self.assert_no_report()
 

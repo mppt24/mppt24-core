@@ -1,0 +1,27 @@
+name: Contratos MPPT24 CORE
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contratos:
+    name: Suites de contrato
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Instalar dependências
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends iproute2 jq python3-jsonschema
+      - name: Executar as suites
+        run: bash tests/run-contract-tests.sh

@@ -2875,7 +2875,7 @@ class GenerationManifestContractTest(
             sorted(locations),
         )
 
-    def test_legacy_components_are_preserved(
+    def test_recorded_component_hashes_match(
         self,
     ) -> None:
         expected = {
@@ -2892,8 +2892,8 @@ class GenerationManifestContractTest(
                 "116ecfb4c2b9c1d766effd8455563b3e"
             ),
             "decision/decision-engine.sh": (
-                "d008c561f2b32054aed42667e5bcb5c8"
-                "b600ad38e9b61ac868ec203b26834707"
+                "f1ac43b947c40b7c28f2a6c15b3aad32"
+                "a458e8eb811e5ccc3963e9d5c150b98e"
             ),
             "observer/observer-cpu.sh": (
                 "f397a9b18005cc4d0542cd231a2a2b2b"
@@ -2904,8 +2904,8 @@ class GenerationManifestContractTest(
                 "2b0ff87ea35f17a52b4d9c0ad73d1072"
             ),
             "observer/observer-network.sh": (
-                "445ce42beea75cfe986c0b10f751da896"
-                "0c743ce8603fb013220c788c6998039"
+                "37b910c0321cd41ddef49310d45a2eff6"
+                "c327de19642c40745db7c879c3d59bd"
             ),
             "observer/observer-services.sh": (
                 "99b0c584e19dac48bb49a68b018bf760"
