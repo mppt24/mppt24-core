@@ -98,6 +98,12 @@ A implementação aplica, entre outras, as seguintes fronteiras:
 
 A edição pública não inclui palavras-passe, tokens, chaves privadas nem relatórios operacionais reais.
 
+## Relatórios e documentação técnica
+
+- **O que ficou validado em cada etapa.** Os relatórios de encerramento descrevem o que foi testado nas primeiras versões dos observadores. [Observador do sistema](reports/observer-system-1.0.0.md) · [Observador de SSH](reports/observer-ssh-1.0.0.md)
+- **Como ler um relatório JSON.** A especificação explica os campos, os possíveis estados e o grau de confiança. [Especificação comum](SPECIFICATION.md#estrutura-do-relatório)
+- **Como as peças trabalham em conjunto.** A arquitetura descreve a sequência completa e as responsabilidades dos componentes. [Arquitetura do pipeline](ARCHITECTURE.md)
+
 ## Estrutura do repositório
 
 - `config/` — configuração e registo autorizado de observers;
