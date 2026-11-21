@@ -1,10 +1,15 @@
 # MPPT24 CORE
 
-[Guia de leitura, infográfico e cuidados](GUIA.md)
+O CORE recolhe dados de um sistema Linux, como utilização de CPU, espaço em disco e estado dos serviços. Verifica a qualidade desses dados e produz um relatório que explica os resultados.
 
-MPPT24 CORE é uma plataforma modular para observar sistemas Linux, validar os dados recolhidos e produzir decisões técnicas justificáveis.
+## Primeiros passos
 
-O sistema separa rigorosamente observação, validação, histórico e decisão. Quando os dados são insuficientes ou incoerentes, o resultado é `UNKNOWN`, em vez de uma conclusão inventada.
+- **Perceber um resultado sem instalar.** Se faltarem dados de rede, o CORE pode devolver `UNKNOWN`. Nesse caso, começa por perceber por que falhou a recolha. [Guia de leitura, infográfico e cuidados](GUIA.md)
+- **Correr os testes.** Começa pelos requisitos e segue os comandos de validação. A base foi validada em Ubuntu Server 24.04 LTS. [Requisitos](#requisitos) · [Como correr os testes](#valida%C3%A7%C3%A3o)
+- **Entender o código.** Segue o percurso desde a recolha até ao relatório final. [Fluxo operacional](#fluxo-operacional)
+- **Reportar um problema de segurança.** Consulta o canal e a informação a incluir. [Política de segurança](SECURITY.md)
+
+O código e os testes já estão publicados. O empacotamento e o instalador público continuam em preparação.
 
 ## Princípios
 
