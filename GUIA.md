@@ -8,7 +8,7 @@ Pipeline Linux de observação, validação e decisão.
 
 ## Onde começar
 
-Lê [a arquitetura](ARCHITECTURE.md) e os [requisitos do README](README.md#requisitos).
+Começa pelo exemplo abaixo para perceber um resultado. Para ver a sequência desde a recolha de dados até ao relatório, lê os [primeiros passos do CORE](README.md#primeiros-passos). Para aprofundar, abre a [arquitetura técnica](ARCHITECTURE.md).
 
 ## Como confirmar
 
@@ -24,7 +24,7 @@ Em **Actions**, abre «Contratos MPPT24 CORE». Procura a linha final `Suites: 9
 OK · Suites: 9 · Falhas: 0
 ```
 
-Lê pela ordem **resultado**, **etapa** e **detalhe**. Para investigar uma falha, confirma primeiro a data e a versão, depois abre o primeiro passo que falhou.
+Uma suite é um conjunto de testes relacionados. «Falhas: 0» diz respeito aos testes dessa execução. Num relatório do sistema, `UNKNOWN` significa que falta informação. Por exemplo, sem dados fiáveis da ligação, começa por rever a recolha em vez de interpretar o resultado como uma falha da rede. [Ver a execução dos testes do CORE](https://github.com/mppt24/mppt24-core/actions/runs/44919951511)
 
 ## Cuidados
 
